@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hedge_Fund_bot — 機関投資家が読む情報と同じ水準で、毎朝8時に</title>
+<meta name="description" content="通常は有料・限定公開の一次情報源をAIが毎朝集約。個人では揃えにくい深度の市況を毎朝8時にお届けします。">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0f1a2e;
+    --navy2: #1a2e4a;
+    --blue: #3b7af4;
+    --blue2: #5a9af8;
+    --gold: #f0b429;
+    --text: #1a1a2e;
+    --muted: #6b7280;
+    --bg: #f8faff;
+    --card: #ffffff;
+    --border: #e5e9f0;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+         background: var(--bg); color: var(--text); line-height: 1.7; }
+
+  /* ── HEADER ── */
+  header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 100%);
+    color: #fff;
+    padding: 20px 0;
+    position: sticky; top: 0; z-index: 100;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  .header-inner { max-width: 960px; margin: 0 auto; padding: 0 24px;
+                  display: flex; align-items: center; justify-content: space-between; }
+  .logo { font-size: 18px; font-weight: 700; letter-spacing: .5px; }
+  .logo span { color: var(--gold); }
+  nav a { color: rgba(255,255,255,.75); text-decoration: none; margin-left: 28px;
+          font-size: 14px; transition: color .2s; }
+  nav a:hover { color: #fff; }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(160deg, var(--navy) 0%, #1e3a5f 60%, #2b5797 100%);
+    color: #fff;
+    padding: 96px 24px 80px;
+    text-align: center;
+  }
+  .hero h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 800;
+             line-height: 1.3; max-width: 700px; margin: 0 auto 20px; }
+  .hero h1 em { color: var(--gold); font-style: normal; }
+  .hero p { font-size: 16px; color: rgba(255,255,255,.8);
+            max-width: 520px; margin: 0 auto 36px; }
+  .hero-cta { display: inline-block; background: var(--blue); color: #fff;
+              padding: 16px 40px; border-radius: 8px; font-size: 16px;
+              font-weight: 700; text-decoration: none; transition: background .2s;
+              box-shadow: 0 4px 20px rgba(59,122,244,.4); }
+  .hero-cta:hover { background: var(--blue2); }
+  .hero-sub { font-size: 13px; color: rgba(255,255,255,.5); margin-top: 14px; }
+
+  /* ── SECTION ── */
+  section { padding: 80px 24px; }
+  .inner { max-width: 960px; margin: 0 auto; }
+  .section-title { text-align: center; margin-bottom: 48px; }
+  .section-title h2 { font-size: 28px; font-weight: 800; }
+  .section-title p { color: var(--muted); margin-top: 10px; font-size: 15px; }
+
+  /* ── FEATURES ── */
+  .features { background: #fff; }
+  .feat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+  .feat-card { border: 1px solid var(--border); border-radius: 12px; padding: 28px;
+               background: var(--card); transition: box-shadow .2s; }
+  .feat-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,.08); }
+  .feat-icon { font-size: 32px; margin-bottom: 14px; }
+  .feat-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+  .feat-card p { font-size: 14px; color: var(--muted); }
+
+  /* ── EXAMPLE ── */
+  .example { background: var(--bg); }
+  .example-box { background: #fff; border: 1px solid var(--border); border-radius: 12px;
+                 padding: 32px; max-width: 680px; margin: 0 auto; }
+  .example-label { font-size: 11px; color: var(--blue); font-weight: 700;
+                   letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
+  .ex-cat { margin-bottom: 20px; }
+  .ex-cat h4 { font-size: 13px; color: var(--navy); font-weight: 700;
+               border-left: 3px solid var(--blue); padding-left: 10px; margin-bottom: 8px; }
+  .ex-cat ul { padding-left: 20px; }
+  .ex-cat li { font-size: 13px; color: #333; line-height: 1.7; margin-bottom: 4px; }
+  .ex-xpost { background: #f0f4ff; border-radius: 8px; padding: 14px 18px; margin-top: 20px;
+              font-size: 13px; color: #334; line-height: 1.6; }
+  .ex-xpost .tag { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
+
+  /* ── PRICING ── */
+  .pricing { background: #fff; }
+  .plan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+  .plan { border: 2px solid var(--border); border-radius: 16px; padding: 32px 28px;
+          position: relative; background: #fff; }
+  .plan.popular { border-color: var(--blue); }
+  .plan-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+                background: var(--blue); color: #fff; font-size: 11px; font-weight: 700;
+                padding: 3px 14px; border-radius: 20px; white-space: nowrap; }
+  .plan h3 { font-size: 18px; font-weight: 800; margin-bottom: 6px; }
+  .plan .price { font-size: 36px; font-weight: 800; color: var(--navy);
+                 margin: 16px 0 4px; line-height: 1; }
+  .plan .price span { font-size: 15px; font-weight: 400; color: var(--muted); }
+  .plan .desc { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+  .plan ul { list-style: none; margin-bottom: 28px; }
+  .plan ul li { font-size: 14px; padding: 6px 0; border-bottom: 1px solid var(--border); }
+  .plan ul li::before { content: "✓ "; color: var(--blue); font-weight: 700; }
+  .plan-btn { display: block; text-align: center; padding: 13px;
+              border-radius: 8px; font-size: 15px; font-weight: 700;
+              text-decoration: none; transition: all .2s; }
+  .plan-btn.primary { background: var(--blue); color: #fff; }
+  .plan-btn.primary:hover { background: var(--blue2); }
+  .plan-btn.outline { border: 2px solid var(--border); color: var(--text); }
+  .plan-btn.outline:hover { border-color: var(--blue); color: var(--blue); }
+
+  /* ── FAQ ── */
+  .faq { background: var(--bg); }
+  .faq-list { max-width: 680px; margin: 0 auto; }
+  .faq-item { background: #fff; border: 1px solid var(--border); border-radius: 10px;
+              padding: 20px 24px; margin-bottom: 12px; }
+  .faq-item h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+  .faq-item p { font-size: 14px; color: var(--muted); }
+
+  /* ── CTA FINAL ── */
+  .cta-final {
+    background: linear-gradient(135deg, var(--navy) 0%, #1e3a5f 100%);
+    color: #fff; text-align: center; padding: 80px 24px;
+  }
+  .cta-final h2 { font-size: 28px; font-weight: 800; margin-bottom: 16px; }
+  .cta-final p { color: rgba(255,255,255,.7); margin-bottom: 32px; }
+
+  /* ── FOOTER ── */
+  footer { background: var(--navy); color: rgba(255,255,255,.4);
+           text-align: center; padding: 32px 24px; font-size: 12px; }
+  footer a { color: rgba(255,255,255,.5); text-decoration: none; margin: 0 12px; }
+
+  @media (max-width: 600px) {
+    .hero { padding: 64px 20px 60px; }
+    nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo">Hedge<span>_Fund_bot</span></div>
+    <nav>
+      <a href="#features">特長</a>
+      <a href="#example">サンプル</a>
+      <a href="#pricing">料金</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <h1><em>機関投資家が朝イチで読む情報</em>と、<br>同じ水準で。</h1>
+  <p>通常は有料・限定公開の複数の一次情報源をAIが毎朝集約。<br>
+     個人では揃えるのが難しい深度の市況を、毎朝8時に整理してお届けします。</p>
+  <a href="#pricing" class="hero-cta">プランを見る</a>
+  <p class="hero-sub">X（Twitter）フォローなら無料で始められます</p>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="inner">
+    <div class="section-title">
+      <h2>このサービスの特長</h2>
+      <p>毎朝のルーティンを、もっとスマートに。</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-icon">📊</div>
+        <h3>個人では揃えにくい情報源</h3>
+        <p>通常は有料・限定公開の複数の一次情報源をAIが毎朝自動集約。個人投資家が自力で揃えるのは現実的でない情報量です。</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🤖</div>
+        <h3>ファクトのみ・ノイズなし</h3>
+        <p>「予測」「見通し」「推奨」は一切除外。数値・指標・決定事項など検証可能な事実だけを簡潔に整理します。</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">⏰</div>
+        <h3>始業前に読み終わる</h3>
+        <p>深夜〜早朝の市場動向を毎朝8時に配信。機関投資家が朝イチで確認するような情報を、出社前に把握できます。</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🔔</div>
+        <h3>銘柄ウォッチ機能</h3>
+        <p>気になる銘柄・テーマを登録すると、新着レポートを検知してアラートメールを送信します。</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🔒</div>
+        <h3>安心の情報設計</h3>
+        <p>アナリスト固有の推計・目標株価は出力しません。公開データに基づく事実のみ。</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📱</div>
+        <h3>X（Twitter）でも確認</h3>
+        <p>フォローするだけで朝の市況ツイートを受け取れます。まずは無料でお試しください。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXAMPLE -->
+<section class="example" id="example">
+  <div class="inner">
+    <div class="section-title">
+      <h2>配信サンプル</h2>
+      <p>こんな形式でメールが届きます。</p>
+    </div>
+    <div class="example-box">
+      <div class="example-label">朝の市況レポート — 2026年3月7日</div>
+      <div class="ex-cat">
+        <h4>米国株</h4>
+        <ul>
+          <li>NYダウ 前日比-120pt、終値 39,200ドル</li>
+          <li>S&amp;P500 -0.3%、NASDAQ -0.5%</li>
+          <li>VIX指数 18.2（前日 16.8）</li>
+        </ul>
+      </div>
+      <div class="ex-cat">
+        <h4>為替</h4>
+        <ul>
+          <li>ドル円 149.50円（東京8時時点）</li>
+          <li>ユーロドル 1.0830</li>
+        </ul>
+      </div>
+      <div class="ex-cat">
+        <h4>経済指標</h4>
+        <ul>
+          <li>米2月ISM製造業 50.3（前月比+1.2pt、50超で拡張）</li>
+          <li>米1月PCEコアデフレーター 前年比+2.6%</li>
+        </ul>
+      </div>
+      <div class="ex-xpost">
+        <div class="tag">X投稿プレビュー</div>
+        NYダウ-120pt(39,200)、ドル円149.50円。米ISM製造業50.3と拡張圏回復。PCEコア+2.6% #市況
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="inner">
+    <div class="section-title">
+      <h2>料金プラン</h2>
+      <p>まずは無料のXフォローから。ステップアップも簡単です。</p>
+    </div>
+    <div class="plan-grid">
+
+      <!-- FREE -->
+      <div class="plan">
+        <h3>フリー</h3>
+        <div class="price">¥0<span>/月</span></div>
+        <p class="desc">Xをフォローするだけ</p>
+        <ul>
+          <li>朝の市況ツイート（毎日）</li>
+          <li>X（Twitter）配信のみ</li>
+        </ul>
+        <!-- Xアカウントへのリンクに差し替えてください -->
+        <a href="https://x.com/Hedge_Fund_bot" class="plan-btn outline" target="_blank">
+          X をフォロー
+        </a>
+      </div>
+
+      <!-- BASIC -->
+      <div class="plan popular">
+        <div class="plan-badge">人気</div>
+        <h3>ベーシック</h3>
+        <!-- 価格はStripe設定後に合わせて変更してください -->
+        <div class="price">¥980<span>/月</span></div>
+        <p class="desc">メールで毎朝受け取る</p>
+        <ul>
+          <li>朝の市況メール（毎日8時）</li>
+          <li>HTML形式・読みやすいレイアウト</li>
+          <li>X配信も継続</li>
+        </ul>
+        <!-- Stripe Payment Linkに差し替えてください -->
+        <a href="#" class="plan-btn primary">申し込む</a>
+      </div>
+
+      <!-- PREMIUM -->
+      <div class="plan">
+        <h3>プレミアム</h3>
+        <div class="price">¥2,980<span>/月</span></div>
+        <p class="desc">銘柄ウォッチ付き</p>
+        <ul>
+          <li>ベーシックの全機能</li>
+          <li>銘柄ウォッチ 1銘柄</li>
+          <li>新着検知アラートメール</li>
+          <li>追加銘柄 +¥1,000/銘柄</li>
+        </ul>
+        <!-- Stripe Payment Linkに差し替えてください -->
+        <a href="#" class="plan-btn primary">申し込む</a>
+      </div>
+
+    </div>
+    <p style="text-align:center;margin-top:24px;font-size:13px;color:var(--muted)">
+      ※ お支払いはクレジットカード（Stripe決済）。いつでもキャンセル可能です。
+    </p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="inner">
+    <div class="section-title">
+      <h2>よくある質問</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h4>情報はどこから来ていますか？</h4>
+        <p>国内外の証券会社が配信するリサーチレポートをもとに、AIが客観的な事実のみを抽出・整理しています。出所・アナリスト名などは一切出力しません。</p>
+      </div>
+      <div class="faq-item">
+        <h4>投資助言ですか？</h4>
+        <p>いいえ。本サービスは情報提供のみを目的としており、投資助言・推奨は一切行いません。投資判断はご自身の責任でお願いします。</p>
+      </div>
+      <div class="faq-item">
+        <h4>銘柄ウォッチはどんな銘柄が対象ですか？</h4>
+        <p>国内外の個別株・指数・テーマ（AI・半導体・EVなど）に対応しています。ご希望の銘柄はお申し込み後にご連絡ください。</p>
+      </div>
+      <div class="faq-item">
+        <h4>解約はいつでもできますか？</h4>
+        <p>はい。月次契約のため、翌月分の請求前にキャンセルいただければ追加費用は発生しません。</p>
+      </div>
+      <div class="faq-item">
+        <h4>配信停止したい場合は？</h4>
+        <p>メール本文下部の「配信停止」リンクからいつでも停止できます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <div class="inner">
+    <h2>まずは無料で始めてみませんか？</h2>
+    <p>Xフォローなら、今すぐ0円でスタートできます。</p>
+    <!-- Xアカウントへのリンクに差し替えてください -->
+    <a href="https://x.com/Hedge_Fund_bot" class="hero-cta" target="_blank">
+      X でフォローする（無料）
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>
+    <a href="mailto:">お問い合わせ</a>
+    <a href="#">利用規約</a>
+    <a href="#">プライバシーポリシー</a>
+  </p>
+  <p style="margin-top:12px">© 2026 Hedge_Fund_bot. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
