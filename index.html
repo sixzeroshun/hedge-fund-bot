@@ -98,6 +98,23 @@
   .ex-comment { background: #fafaf7; border-left: 2px solid #c8a84b;
                 padding: 10px 14px; margin: 8px 0 4px; font-size: 13px;
                 color: #3a3520; line-height: 1.75; }
+  /* ── SAMPLE TABS ── */
+  .sample-tabs { display: flex; gap: 0; margin-bottom: 0; max-width: 720px; margin: 0 auto; }
+  .sample-tab { padding: 10px 24px; font-size: 12px; font-weight: 700; letter-spacing: 1px;
+                cursor: default; border: 1px solid var(--border); border-bottom: none;
+                background: #f3f4f6; color: var(--muted); border-radius: 4px 4px 0 0; }
+  .sample-tab.active { background: #fff; color: var(--navy); }
+  .sample-tab span { font-size: 10px; font-weight: 400; margin-left: 6px;
+                     background: var(--blue); color: #fff; padding: 1px 6px;
+                     border-radius: 10px; letter-spacing: 0; }
+  /* ── WATCH ALERT ── */
+  .watch-alert { background: #fff8ed; border: 1px solid #e8c97a; border-radius: 4px;
+                 padding: 14px 20px; margin-bottom: 16px; }
+  .watch-alert-header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .watch-tag { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+               background: var(--gold); color: #fff; padding: 2px 8px; border-radius: 2px; }
+  .watch-ticker { font-size: 13px; font-weight: 700; color: var(--navy); }
+  .watch-time { font-size: 11px; color: var(--muted); margin-left: auto; }
 
   /* ── PRICING ── */
   .pricing { background: #fff; }
@@ -252,10 +269,15 @@
   <div class="inner">
     <div class="section-title">
       <h2>配信サンプル</h2>
-      <p>実際の配信イメージです。複数の一次情報源をAIが整理してお届けします。</p>
+      <p>プランごとに届く情報の深度が変わります。</p>
     </div>
+    <div class="sample-tabs">
+      <div class="sample-tab active">ベーシック <span>朝の市況メール</span></div>
+      <div class="sample-tab">プレミアム <span>銘柄ウォッチ + 日中Update</span></div>
+    </div>
+
     <div class="example-box">
-      <div class="example-label">Morning Brief &nbsp;/&nbsp; 2026.03.07</div>
+      <div class="example-label">Morning Brief &nbsp;/&nbsp; 2026.03.07 &nbsp;—&nbsp; ベーシックプラン（毎朝8時配信）</div>
 
       <div class="ex-cat">
         <h4>Japan Macro — 春闘 / 日銀</h4>
@@ -298,6 +320,39 @@
         連合春闘要求+5.94%（前年+6.09%）、3/23集計注目。賃金の強さは織り込み済み、問題は価格転嫁。4月確認まで日銀は動けないとみる。中東：過去40年の空爆21回後、S&amp;P500は8週後に95%上昇。エネルギーフロー遮断が唯一の焦点 #市況 #春闘 #日銀
       </div>
     </div>
+
+    <!-- PREMIUM SAMPLE -->
+    <div class="example-box" style="margin-top:12px; border-color: #c8a84b;">
+      <div class="example-label" style="color: #9a7a20;">Premium &nbsp;/&nbsp; 2026.03.07 &nbsp;—&nbsp; プレミアムプラン追加機能のサンプル</div>
+
+      <div class="ex-cat">
+        <h4>Intraday Update — 日中アップデート（13:45配信）</h4>
+        <ul>
+          <li>連合の春闘関連会見、予想通りの内容でサプライズなし。午後の債券市場は落ち着いた動き</li>
+          <li>韓国KOSPI、午前の急落から一部回復。外国人売りは継続も勢いは鈍化</li>
+          <li>NY原油先物、中東情勢への警戒でじり高。エネルギー株に短期資金が流入する動き</li>
+        </ul>
+        <div class="ex-comment">朝の段階では読み切れなかった午後の動き。中東リスクは「慣れ」に向かいつつあるが、原油だけは別線で見ておく必要があるとみる。</div>
+      </div>
+
+      <div class="ex-cat" style="border-bottom:none; margin-bottom:0; padding-bottom:0;">
+        <h4>Watch Alert — 銘柄ウォッチアラート（レゾナックHD / 4004）</h4>
+        <div class="watch-alert">
+          <div class="watch-alert-header">
+            <span class="watch-tag">Alert</span>
+            <span class="watch-ticker">レゾナックHD（4004）— 新着カバレッジ検知</span>
+            <span class="watch-time">09:12</span>
+          </div>
+          <ul style="padding-left:0; list-style:none;">
+            <li style="font-size:13.5px; color:#222; line-height:1.8; padding-left:14px; position:relative; margin-bottom:6px;"><span style="position:absolute;left:0;color:#bbb;">—</span>銅張積層板の値上げ（+30%）が4月から本格浸透。1Q決算での上方修正が視野に入る水準</li>
+            <li style="font-size:13.5px; color:#222; line-height:1.8; padding-left:14px; position:relative; margin-bottom:6px;"><span style="position:absolute;left:0;color:#bbb;">—</span>HDD向け値上げ交渉も進行中。主要顧客への通知が始まっており、2Q以降の業績加速が期待される</li>
+            <li style="font-size:13.5px; color:#222; line-height:1.8; padding-left:14px; position:relative;"><span style="position:absolute;left:0;color:#bbb;">—</span>複数のアナリストが目標株価を大幅引き上げ（現水準の2倍超）。コンセンサスとの乖離がまだ大きく、見直し余地が残る</li>
+          </ul>
+          <div class="ex-comment" style="margin-top:12px;">値上げ効果をコンセンサスはまだ懐疑的にみている。4月の決算シーズンで数字が出てくれば一段の見直しが入るとみる。先回りできるタイミングではないか。</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -329,12 +384,12 @@
       <div class="plan popular">
         <div class="plan-badge">人気</div>
         <h3>ベーシック</h3>
-        <!-- 価格はStripe設定後に合わせて変更してください -->
         <div class="price">¥980<span>/月</span></div>
-        <p class="desc">メールで毎朝受け取る</p>
+        <p class="desc">市場が開く前に、知っている状態をつくる</p>
         <ul>
-          <li>朝の市況メール（毎日8時）</li>
-          <li>HTML形式・読みやすいレイアウト</li>
+          <li>朝の市況メール（毎朝8時）</li>
+          <li>機関投資家水準の情報をAIが整理</li>
+          <li>ファクト + 市場の解釈をセットで配信</li>
           <li>X配信も継続</li>
         </ul>
         <!-- Stripe Payment Linkに差し替えてください -->
@@ -345,11 +400,12 @@
       <div class="plan">
         <h3>プレミアム</h3>
         <div class="price">¥2,980<span>/月</span></div>
-        <p class="desc">銘柄ウォッチ付き</p>
+        <p class="desc">動く前に知る体験を、特定銘柄でも</p>
         <ul>
           <li>ベーシックの全機能</li>
-          <li>銘柄ウォッチ 1銘柄</li>
-          <li>新着検知アラートメール</li>
+          <li>日中アップデート（相場中の重要変化を随時配信）</li>
+          <li>銘柄ウォッチ 3銘柄（個別深堀アラート）</li>
+          <li>新着情報を即時検知 → 深堀分析をメール配信</li>
           <li>追加銘柄 +¥1,000/銘柄</li>
         </ul>
         <!-- Stripe Payment Linkに差し替えてください -->
