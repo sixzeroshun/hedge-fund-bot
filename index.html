@@ -124,6 +124,30 @@
   .plan-btn.outline { border: 2px solid var(--border); color: var(--text); }
   .plan-btn.outline:hover { border-color: var(--blue); color: var(--blue); }
 
+  /* ── INSIGHT ── */
+  .insight { background: var(--navy); padding: 64px 24px; }
+  .insight-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+  .insight-inner p { font-size: clamp(17px, 2.5vw, 22px); color: rgba(255,255,255,.82);
+                     line-height: 1.9; font-weight: 300; letter-spacing: .2px; }
+  .insight-inner strong { color: var(--gold); font-weight: 700; }
+
+  /* ── FEATURES V2 ── */
+  .feat-label { font-size: 10px; font-weight: 700; letter-spacing: 2.5px;
+                text-transform: uppercase; color: var(--blue); margin-bottom: 14px; }
+  .feat-card-main { border: 1px solid var(--border); border-radius: 4px;
+                    padding: 44px 48px; background: #fff; margin-bottom: 20px; }
+  .feat-card-main h3 { font-size: 22px; font-weight: 800; margin-bottom: 18px;
+                       line-height: 1.45; color: var(--navy); }
+  .feat-card-main p { font-size: 15px; color: #555; line-height: 1.85;
+                      margin-bottom: 14px; max-width: 640px; }
+  .feat-card-main p:last-child { margin-bottom: 0; }
+  .feat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+  .feat-card-s { border: 1px solid var(--border); border-radius: 4px;
+                 padding: 30px 32px; background: #fff; }
+  .feat-card-s h3 { font-size: 16px; font-weight: 800; margin-bottom: 10px;
+                    line-height: 1.4; color: var(--navy); }
+  .feat-card-s p { font-size: 14px; color: #666; line-height: 1.8; }
+
   /* ── FAQ ── */
   .faq { background: var(--bg); }
   .faq-list { max-width: 680px; margin: 0 auto; }
@@ -170,39 +194,51 @@
 <section class="hero">
   <h1><em>機関投資家が動く前に、<br>何を読んでいるか。</em></h1>
   <p>相場が動く理由は、ネットには載っていない。<br>
-     機関投資家が毎朝読む情報をAIが集約し、市場が開く前にお届けします。</p>
+     市場が開く前に、知っている人間がいる。</p>
   <a href="#pricing" class="hero-cta">プランを見る</a>
   <p class="hero-sub">X（Twitter）フォローなら無料で始められます</p>
+</section>
+
+<!-- INSIGHT -->
+<section class="insight">
+  <div class="insight-inner">
+    <p>チャートが動いた時、それはすでに<strong>「結果」</strong>だ。<br>
+       機関投資家は、その数時間前に読んでいた。<br>
+       彼らが何を見て、どう解釈したか——<br>
+       それを知ることと、知らないことの差が、相場の差になる。</p>
+  </div>
 </section>
 
 <!-- FEATURES -->
 <section class="features" id="features">
   <div class="inner">
-    <div class="section-title">
-      <h2>なぜ、この情報が必要か</h2>
-      <p>相場が動いてから調べても、もう遅い。</p>
+
+    <div class="feat-card-main">
+      <div class="feat-label">Information</div>
+      <h3>ネットには、存在しない情報がある。</h3>
+      <p>Yahoo!ファイナンスにも、Xにも、Googleにも載っていない。機関投資家向けに配信される情報は、限られたチャンネルでのみ流通している。そしてその情報が、毎朝の相場の方向性を形成している。</p>
+      <p>個人投資家がそこへアクセスすることは、通常できない。このサービスは、その情報をAIが毎朝集約し、市場が開く前に届ける。</p>
     </div>
-    <div class="feat-grid">
-      <div class="feat-card">
-        <h3>ネットに載っていない情報</h3>
-        <p>機関投資家が毎朝読む情報は、Yahoo!ファイナンスにも、Xにも、Googleにも載っていない。有料・非公開ルートで流通する一次情報を、AIが毎朝集約する。</p>
+
+    <div class="feat-row">
+      <div class="feat-card-s">
+        <div class="feat-label">Edge</div>
+        <h3>数字より、解釈が重要だ。</h3>
+        <p>同じ経済指標を見ても、機関投資家の読み方は違う。何を重視し、どう解釈したか——その思考回路こそが、相場の次の動きを示している。ファクトに加え、市場の解釈を届ける。</p>
       </div>
-      <div class="feat-card">
-        <h3>機関投資家は先に動いている</h3>
-        <p>チャートが動いた時、すでに彼らは知っていた。何を読み、どう解釈したか——その思考回路を先に知ることが、相場を読む上で最も重要なことだ。</p>
+      <div class="feat-card-s">
+        <div class="feat-label">Timing</div>
+        <h3>市場が開く前に、届く。</h3>
+        <p>毎朝8時配信。機関投資家が始業前のブリーフィングで確認する水準の情報を、東京市場が動き出す前に手元に置く。情報を持った状態で、その日の相場に向き合う。</p>
       </div>
-      <div class="feat-card">
-        <h3>市場が開く前に届く</h3>
-        <p>毎朝8時配信。機関投資家が始業前のブリーフィングで確認する情報と同水準の内容を、相場が動き出す前に手元に置く。</p>
+      <div class="feat-card-s">
+        <div class="feat-label">Watch</div>
+        <h3>動く前に、知る。</h3>
+        <p>気になる銘柄・テーマに新たな動きがあれば、即座にアラートが届く。チャートが動いてから気づくのではなく、その前に知る体験。（プレミアムプラン）</p>
       </div>
-      <div class="feat-card">
-        <h3>銘柄ウォッチ — 動く前に知る</h3>
-        <p>気になる銘柄・テーマを登録すると、新たな情報が出た瞬間にアラートが届く。チャートが動いてから気づくのではなく、その前に知る。</p>
-      </div>
-      <div class="feat-card">
-        <h3>ファクトのみ・ノイズなし</h3>
-        <p>「予測」「推奨」「見通し」は一切含まない。数値・指標・市場の変化の兆しを、5分で読み切れる形に整理する。</p>
-      </div>
+    </div>
+
+    <div class="feat-grid" style="margin-top:20px">
       <div class="feat-card">
         <h3>X（Twitter）でも確認</h3>
         <p>フォローするだけで朝の市況ツイートを受け取れます。まずは無料でお試しください。</p>
@@ -361,9 +397,8 @@
 <!-- CTA FINAL -->
 <section class="cta-final">
   <div class="inner">
-    <h2>まずは無料で始めてみませんか？</h2>
-    <p>Xフォローなら、今すぐ0円でスタートできます。</p>
-    <!-- Xアカウントへのリンクに差し替えてください -->
+    <h2>知っている人間は、もう動いている。</h2>
+    <p>まずはXをフォロー。毎朝の市況投稿で、情報の質の違いを確かめてください。</p>
     <a href="https://x.com/Hedge_Fund_bot" class="hero-cta" target="_blank">
       X でフォローする（無料）
     </a>
