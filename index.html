@@ -76,22 +76,28 @@
   .feat-card p { font-size: 14px; color: var(--muted); }
 
   /* ── EXAMPLE ── */
-  .example { background: var(--bg); }
-  .example-box { background: #fff; border: 1px solid var(--border); border-radius: 12px;
-                 padding: 32px; max-width: 680px; margin: 0 auto; }
-  .example-label { font-size: 11px; color: var(--blue); font-weight: 700;
-                   letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
-  .ex-cat { margin-bottom: 20px; }
-  .ex-cat h4 { font-size: 13px; color: var(--navy); font-weight: 700;
-               border-left: 3px solid var(--blue); padding-left: 10px; margin-bottom: 8px; }
-  .ex-cat ul { padding-left: 20px; }
-  .ex-cat li { font-size: 13px; color: #333; line-height: 1.7; margin-bottom: 4px; }
-  .ex-xpost { background: #f0f4ff; border-radius: 8px; padding: 14px 18px; margin-top: 20px;
-              font-size: 13px; color: #334; line-height: 1.6; }
-  .ex-xpost .tag { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
-  .ex-cat em { display: block; background: #fffbea; border-left: 3px solid var(--gold);
-               padding: 8px 12px; margin: 8px 0 4px; font-style: normal;
-               font-size: 13px; color: #4a3f00; line-height: 1.6; border-radius: 0 6px 6px 0; }
+  .example { background: #f3f4f6; }
+  .example-box { background: #fff; border: 1px solid #dde1ea; border-radius: 4px;
+                 padding: 36px 40px; max-width: 720px; margin: 0 auto;
+                 font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif; }
+  .example-label { font-size: 10px; color: var(--muted); font-weight: 400;
+                   letter-spacing: 2px; text-transform: uppercase; margin-bottom: 24px;
+                   padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+  .ex-cat { margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #f0f0f0; }
+  .ex-cat:last-of-type { border-bottom: none; }
+  .ex-cat h4 { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+               color: var(--muted); margin-bottom: 12px; }
+  .ex-cat ul { padding-left: 0; list-style: none; }
+  .ex-cat li { font-size: 13.5px; color: #222; line-height: 1.8; margin-bottom: 6px;
+               padding-left: 14px; position: relative; }
+  .ex-cat li::before { content: "—"; position: absolute; left: 0; color: #bbb; }
+  .ex-xpost { background: #f8f9fc; border: 1px solid #e5e9f0; border-radius: 4px;
+              padding: 16px 20px; margin-top: 28px; font-size: 13px; color: #334; line-height: 1.7; }
+  .ex-xpost .tag { font-size: 10px; color: var(--muted); letter-spacing: 1.5px;
+                   text-transform: uppercase; margin-bottom: 8px; }
+  .ex-comment { background: #fafaf7; border-left: 2px solid #c8a84b;
+                padding: 10px 14px; margin: 8px 0 4px; font-size: 13px;
+                color: #3a3520; line-height: 1.75; }
 
   /* ── PRICING ── */
   .pricing { background: #fff; }
@@ -219,49 +225,53 @@
       <p>実際の配信イメージです。複数の一次情報源をAIが整理してお届けします。</p>
     </div>
     <div class="example-box">
-      <div class="example-label">朝の市況レポート — 2026年3月7日（サンプル）</div>
+      <div class="example-label">Morning Brief &nbsp;/&nbsp; 2026.03.07</div>
 
       <div class="ex-cat">
-        <h4>🇯🇵 春闘・賃金・日銀</h4>
+        <h4>Japan Macro — 春闘 / 日銀</h4>
         <ul>
-          <li>連合が組合要求の平均値を発表：<strong>+5.94%</strong>（前年+6.09%から若干低下）。第1回集計は3/23公表予定</li>
-          <li>複数のアナリストが今年の春闘結果を「前年をわずかに下回るが堅調」と評価。ベア部分も日銀の想定内との見方</li>
-          <li><em>📌 市場関係者のコメント：「賃金が強いのは既に織り込み済み。問題は価格転嫁が続くかどうか。4月の価格改定を確認するまで日銀は動けない、というのが今の支配的シナリオ」</em></li>
-          <li>中東情勢が長引けばスタグフレーション的な悪影響も。この状況での利上げは難しいとの見方も</li>
+          <li>連合、組合要求の平均値を発表：<strong>+5.94%</strong>（前年+6.09%からわずかに低下）。第1回集計は3/23公表予定</li>
+          <li>複数のアナリストが今年の春闘結果を「前年をわずかに下回るも堅調」と評価。ベア部分も日銀の想定内との見方が多数</li>
+        </ul>
+        <div class="ex-comment">「賃金の強さは既に織り込み済み。問題は価格転嫁が続くかどうかだ。4月の価格改定を確認するまで日銀は動けない、というのが今の支配的シナリオ」</div>
+        <ul>
+          <li>中東情勢が長引いた場合のスタグフレーション的影響も変数。3〜4月会合での利上げハードルは高いとの評価が多数</li>
         </ul>
       </div>
 
       <div class="ex-cat">
-        <h4>🌍 地政学リスク（中東）— 機関投資家の見方</h4>
+        <h4>Geopolitics — 中東リスクと機関投資家のポジション</h4>
         <ul>
-          <li>過去40年・米軍MENA空爆21回のうち、<strong>8週後のS&amp;P500が上昇したのは95%</strong></li>
-          <li><em>📌 ヘッジファンド担当者コメント：「地政学について本当に何かを知っている人間はほとんどいない。市場はある時点で慣れ、先に進む。唯一の例外はエネルギーフローが止まる時だ。今、全ての主要プレーヤーに供給遮断を長引かせるインセンティブはない」</em></li>
-          <li>韓国株：海外投資家が<strong>9営業日連続売り越し</strong>。急落局面で国内個人が逆張り買い</li>
-          <li>ヘッジファンド業界ではアジア株の長期下落を最大リスクとして警戒。L/Sパフォーマンスへの影響を注視</li>
+          <li>過去40年・米軍MENA空爆21回後、<strong>8週後のS&amp;P500が上昇した確率は95%</strong>（実績値）</li>
+        </ul>
+        <div class="ex-comment">「地政学について本当に何かを知っている人間はほとんどいない。市場はある時点で慣れ、先に進んでいく。唯一の例外はエネルギーフローが遮断される時だ。今、主要プレーヤー全員に供給遮断を長引かせるインセンティブはない」</div>
+        <ul>
+          <li>韓国株：海外投資家が<strong>9営業日連続売り越し</strong>。月曜の急落局面で国内個人が逆張り買い</li>
+          <li>ヘッジファンドはアジア株の長期下落を最大リスクとして警戒。L/Sパフォーマンスへの影響を注視</li>
         </ul>
       </div>
 
       <div class="ex-cat">
-        <h4>🏢 国内不動産・セクター戦略</h4>
+        <h4>Japan Real Estate — 大手 vs 準大手</h4>
         <ul>
-          <li>金利上昇局面で大手デベロッパー優位が鮮明に。Sグレードオフィス保有比率が評価軸に</li>
-          <li>複数のアナリストが大手2〜3社の目標株価を大幅引き上げ（現水準から50〜60%超の水準へ）。一方で準大手の一部は格下げ方向</li>
-          <li><em>📌 アナリストコメント：「銀行セクターは長らく強気だったが、現在の年2回の利上げ織り込みは過剰。ここから積極的に買い上がる理由は薄い」</em></li>
+          <li>金利上昇局面で大手デベロッパー優位の構図が継続。Sグレードオフィス保有比率が評価軸に</li>
+          <li>大手複数社の目標株価を大幅引き上げ（現水準から50〜60%超の水準へ）。準大手の一部は格下げ方向</li>
         </ul>
+        <div class="ex-comment">「銀行セクターは長らく強気だったが、現在の年2回の利上げ織り込みは過剰。ここから積極的に買い上がる理由は薄い」</div>
       </div>
 
       <div class="ex-cat">
-        <h4>⚗️ 化学・電材（再評価フェーズ）</h4>
+        <h4>Chemicals / Electronic Materials — 値上げ浸透フェーズ</h4>
         <ul>
-          <li>銅張積層板メーカー2社が4月から<strong>+30%値上げ</strong>を通知済み。目標株価の引き上げが相次ぎ、一部は現水準の2倍超の水準へ</li>
+          <li>銅張積層板メーカー2社が4月から<strong>+30%値上げ</strong>を顧客通知済み。目標株価の引き上げが相次ぎ、一部は現水準の2倍超の水準へ</li>
           <li>HDD向け値上げ交渉も進行中。AI需要増で外部サプライヤーへ発注が集中する構図</li>
-          <li><em>📌 アナリストコメント：「値上げ効果はまだコンセンサスが懐疑的。4月以降の数字が出てくれば一段の見直しが入る可能性がある。先回りできるタイミング」</em></li>
         </ul>
+        <div class="ex-comment">「値上げ効果はまだコンセンサスが懐疑的。4月以降の数字が出てくれば一段の見直しが入る可能性がある。先回りできるタイミング」</div>
       </div>
 
       <div class="ex-xpost">
-        <div class="tag">X投稿プレビュー（同日配信）</div>
-        【朝ブリーフ】連合春闘要求+5.94%、3/23集計注目。「4月の価格転嫁確認まで日銀は動けない」が支配的シナリオ。中東：過去40年の空爆21回後、S&P500は8週後に95%上昇。「全プレーヤーに供給遮断を長引かせるインセンティブはない」 #市況 #春闘 #日銀
+        <div class="tag">X Post — 同日配信</div>
+        連合春闘要求+5.94%（前年+6.09%）、3/23集計注目。「4月の価格転嫁確認まで日銀は動けない」が市場の支配的シナリオ。中東：過去40年の空爆21回後、S&amp;P500は8週後に95%上昇。「主要プレーヤーに供給遮断を長引かせるインセンティブはない」 #市況 #春闘 #日銀
       </div>
     </div>
   </div>
