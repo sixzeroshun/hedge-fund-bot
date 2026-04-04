@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hedge_Fund_bot — 機関投資家が読む情報と同じ水準で、毎朝8時に</title>
-<meta name="description" content="通常は有料・限定公開の一次情報源をAIが毎朝集約。個人では揃えにくい深度の市況を毎朝8時にお届けします。">
+<title>The Briefing — 市場が開く前に、読むべきものを届ける</title>
+<meta name="description" content="機関投資家が毎朝読んでいる水準の市況情報を、個人投資家へ。毎朝8時、厳選されたブリーフィングをお届けします。">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -12,7 +12,7 @@
     --navy2: #1a2e4a;
     --blue: #3b7af4;
     --blue2: #5a9af8;
-    --gold: #f0b429;
+    --gold: #c8a84b;
     --text: #1a1a2e;
     --muted: #6b7280;
     --bg: #f8faff;
@@ -33,7 +33,7 @@
   }
   .header-inner { max-width: 960px; margin: 0 auto; padding: 0 24px;
                   display: flex; align-items: center; justify-content: space-between; }
-  .logo { font-size: 18px; font-weight: 700; letter-spacing: .5px; }
+  .logo { font-size: 20px; font-weight: 700; letter-spacing: 1.5px; font-style: italic; }
   .logo span { color: var(--gold); }
   nav a { color: rgba(255,255,255,.75); text-decoration: none; margin-left: 28px;
           font-size: 14px; transition: color .2s; }
@@ -71,7 +71,6 @@
   .feat-card { border: 1px solid var(--border); border-radius: 12px; padding: 28px;
                background: var(--card); transition: box-shadow .2s; }
   .feat-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,.08); }
-  .feat-icon { font-size: 32px; margin-bottom: 14px; }
   .feat-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
   .feat-card p { font-size: 14px; color: var(--muted); }
 
@@ -90,7 +89,7 @@
   .ex-cat ul { padding-left: 0; list-style: none; }
   .ex-cat li { font-size: 13.5px; color: #222; line-height: 1.8; margin-bottom: 6px;
                padding-left: 14px; position: relative; }
-  .ex-cat li::before { content: "—"; position: absolute; left: 0; color: #bbb; }
+  .ex-cat li::before { content: "\2014"; position: absolute; left: 0; color: #bbb; }
   .ex-xpost { background: #f8f9fc; border: 1px solid #e5e9f0; border-radius: 4px;
               padding: 16px 20px; margin-top: 28px; font-size: 13px; color: #334; line-height: 1.7; }
   .ex-xpost .tag { font-size: 10px; color: var(--muted); letter-spacing: 1.5px;
@@ -98,7 +97,6 @@
   .ex-comment { background: #fafaf7; border-left: 2px solid #c8a84b;
                 padding: 10px 14px; margin: 8px 0 4px; font-size: 13px;
                 color: #3a3520; line-height: 1.75; }
-  /* ── SAMPLE TABS ── */
   .sample-tabs { display: flex; gap: 0; margin-bottom: 0; max-width: 720px; margin: 0 auto; }
   .sample-tab { padding: 10px 24px; font-size: 12px; font-weight: 700; letter-spacing: 1px;
                 cursor: default; border: 1px solid var(--border); border-bottom: none;
@@ -107,7 +105,6 @@
   .sample-tab span { font-size: 10px; font-weight: 400; margin-left: 6px;
                      background: var(--blue); color: #fff; padding: 1px 6px;
                      border-radius: 10px; letter-spacing: 0; }
-  /* ── WATCH ALERT ── */
   .watch-alert { background: #fff8ed; border: 1px solid #e8c97a; border-radius: 4px;
                  padding: 14px 20px; margin-bottom: 16px; }
   .watch-alert-header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
@@ -132,7 +129,7 @@
   .plan .desc { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
   .plan ul { list-style: none; margin-bottom: 28px; }
   .plan ul li { font-size: 14px; padding: 6px 0; border-bottom: 1px solid var(--border); }
-  .plan ul li::before { content: "✓ "; color: var(--blue); font-weight: 700; }
+  .plan ul li::before { content: "\2713 "; color: var(--blue); font-weight: 700; }
   .plan-btn { display: block; text-align: center; padding: 13px;
               border-radius: 8px; font-size: 15px; font-weight: 700;
               text-decoration: none; transition: all .2s; }
@@ -140,6 +137,10 @@
   .plan-btn.primary:hover { background: var(--blue2); }
   .plan-btn.outline { border: 2px solid var(--border); color: var(--text); }
   .plan-btn.outline:hover { border-color: var(--blue); color: var(--blue); }
+  .guarantee { text-align: center; margin-top: 28px; padding: 20px;
+               background: #f0f7ff; border: 1px solid #d0dcff; border-radius: 10px; }
+  .guarantee p { font-size: 14px; color: #334; margin: 0; }
+  .guarantee strong { color: var(--navy); }
 
   /* ── INSIGHT ── */
   .insight { background: var(--navy); padding: 64px 24px; }
@@ -197,7 +198,7 @@
 <!-- HEADER -->
 <header>
   <div class="header-inner">
-    <div class="logo">Hedge<span>_Fund_bot</span></div>
+    <div class="logo"><span>The</span> Briefing</div>
     <nav>
       <a href="#features">特長</a>
       <a href="#example">サンプル</a>
@@ -213,7 +214,7 @@
   <p>相場が動く理由は、ネットには載っていない。<br>
      市場が開く前に、知っている人間がいる。</p>
   <a href="#pricing" class="hero-cta">プランを見る</a>
-  <p class="hero-sub">X（Twitter）フォローなら無料で始められます</p>
+  <p class="hero-sub">7日間返金保証つき。まずはXフォローで無料体験も。</p>
 </section>
 
 <!-- INSIGHT -->
@@ -234,7 +235,7 @@
       <div class="feat-label">Information</div>
       <h3>ネットには、存在しない情報がある。</h3>
       <p>Yahoo!ファイナンスにも、Xにも、Googleにも載っていない。機関投資家向けに配信される情報は、限られたチャンネルでのみ流通している。そしてその情報が、毎朝の相場の方向性を形成している。</p>
-      <p>個人投資家がそこへアクセスすることは、通常できない。このサービスは、その情報をAIが毎朝集約し、市場が開く前に届ける。</p>
+      <p>個人投資家がそこへアクセスすることは、通常できない。The Briefingは、その情報を毎朝集約・編集し、市場が開く前に届ける。</p>
     </div>
 
     <div class="feat-row">
@@ -251,14 +252,14 @@
       <div class="feat-card-s">
         <div class="feat-label">Watch</div>
         <h3>動く前に、知る。</h3>
-        <p>気になる銘柄・テーマに新たな動きがあれば、即座にアラートが届く。チャートが動いてから気づくのではなく、その前に知る体験。（プレミアムプラン）</p>
+        <p>気になる銘柄・テーマに新たな動きがあれば、アラートが届く。チャートが動いてから気づくのではなく、その前に知る体験。（プレミアムプラン）</p>
       </div>
     </div>
 
     <div class="feat-grid" style="margin-top:20px">
       <div class="feat-card">
         <h3>X（Twitter）でも確認</h3>
-        <p>フォローするだけで朝の市況ツイートを受け取れます。まずは無料でお試しください。</p>
+        <p>フォローするだけで朝の市況ポストを受け取れます。まずは無料でお試しください。</p>
       </div>
     </div>
   </div>
@@ -277,7 +278,7 @@
     </div>
 
     <div class="example-box">
-      <div class="example-label">Morning Brief &nbsp;/&nbsp; 2026.03.07 &nbsp;—&nbsp; ベーシックプラン（毎朝8時配信）</div>
+      <div class="example-label">The Briefing &nbsp;/&nbsp; 2026.03.07 &nbsp;—&nbsp; Morning Brief（毎朝8時配信）</div>
 
       <div class="ex-cat">
         <h4>Japan Macro — 春闘 / 日銀</h4>
@@ -371,10 +372,9 @@
         <div class="price">¥0<span>/月</span></div>
         <p class="desc">Xをフォローするだけ</p>
         <ul>
-          <li>朝の市況ツイート（毎日）</li>
+          <li>朝の市況ポスト（毎日）</li>
           <li>X（Twitter）配信のみ</li>
         </ul>
-        <!-- Xアカウントへのリンクに差し替えてください -->
         <a href="https://x.com/Hedge_Fund_bot" class="plan-btn outline" target="_blank">
           X をフォロー
         </a>
@@ -384,48 +384,54 @@
       <div class="plan popular">
         <div class="plan-badge">人気</div>
         <h3>ベーシック</h3>
-        <div class="price">¥980<span>/月</span></div>
+        <div class="price">¥9,800<span>/月</span></div>
         <p class="desc">市場が開く前に、知っている状態をつくる</p>
         <ul>
-          <li>朝の市況メール（毎朝8時）</li>
-          <li>機関投資家水準の情報をAIが整理</li>
+          <li>朝のブリーフィング（毎朝8時メール配信）</li>
+          <li>機関投資家水準の情報を厳選・編集</li>
           <li>ファクト + 市場の解釈をセットで配信</li>
           <li>X配信も継続</li>
         </ul>
-        <a href="https://buy.stripe.com/7sY6ozdE1eST4Zg4Cc8so00" class="plan-btn primary" target="_blank">申し込む</a>
+        <a href="https://buy.stripe.com/4gMbITarPaCDezQ4Cc8so04" class="plan-btn primary" target="_blank">申し込む</a>
       </div>
 
       <!-- PREMIUM -->
       <div class="plan">
         <h3>プレミアム</h3>
-        <div class="price">¥2,980<span>/月</span></div>
+        <div class="price">¥29,800<span>/月</span></div>
         <p class="desc">動く前に知る体験を、特定銘柄でも</p>
         <ul>
           <li>ベーシックの全機能</li>
           <li>日中アップデート（相場中の重要変化を随時配信）</li>
           <li>銘柄ウォッチ 3銘柄（個別深堀アラート）</li>
-          <li>新着情報を即時検知 → 深堀分析をメール配信</li>
+          <li>新着情報を検知 → 深堀分析をメール配信</li>
         </ul>
-        <a href="https://buy.stripe.com/bJe9AL0RfeSTajA1q08so01" class="plan-btn primary" target="_blank">申し込む</a>
+        <a href="https://buy.stripe.com/cNi4gr2Zn1232R81q08so03" class="plan-btn primary" target="_blank">申し込む</a>
       </div>
 
       <!-- STOCK ADD-ON -->
       <div class="plan">
         <h3>銘柄ウォッチ</h3>
-        <div class="price">¥1,000<span>/銘柄・月</span></div>
+        <div class="price">¥3,000<span>/銘柄・月</span></div>
         <p class="desc">気になる銘柄だけ、ピンポイントで</p>
         <ul>
-          <li>個別銘柄の新着レポートを即時検知</li>
+          <li>個別銘柄の新着レポートを検知</li>
           <li>深堀分析をメールで配信</li>
           <li>1銘柄から追加可能</li>
           <li>どのプランにも追加OK</li>
           <li>銘柄の変更・入れ替えも随時対応</li>
         </ul>
-        <a href="https://buy.stripe.com/3cI14f9nL6mngHY1q08so02" class="plan-btn outline" target="_blank">銘柄を追加する</a>
+        <a href="https://buy.stripe.com/fZu4grfM9cKL77o0lW8so05" class="plan-btn outline" target="_blank">銘柄を追加する</a>
       </div>
 
     </div>
-    <p style="text-align:center;margin-top:24px;font-size:13px;color:var(--muted)">
+
+    <!-- REFUND GUARANTEE -->
+    <div class="guarantee">
+      <p><strong>7日間返金保証</strong> — 配信内容にご満足いただけなかった場合、お申し込みから7日以内のお申し出で全額返金いたします。</p>
+    </div>
+
+    <p style="text-align:center;margin-top:16px;font-size:13px;color:var(--muted)">
       ※ お支払いはクレジットカード（Stripe決済）。いつでもキャンセル可能です。
     </p>
   </div>
@@ -440,7 +446,7 @@
     <div class="faq-list">
       <div class="faq-item">
         <h4>情報はどこから来ていますか？</h4>
-        <p>個人では通常アクセスが難しい複数の情報源をもとに、AIが毎朝分析・整理しています。情報源の詳細は非公開です。</p>
+        <p>個人では通常アクセスが難しい複数の一次情報源をもとに、毎朝分析・編集しています。情報源の詳細は非公開です。</p>
       </div>
       <div class="faq-item">
         <h4>投資助言ですか？</h4>
@@ -448,7 +454,11 @@
       </div>
       <div class="faq-item">
         <h4>銘柄ウォッチはどんな銘柄が対象ですか？</h4>
-        <p>国内外の個別株・指数・テーマ（AI・半導体・EVなど）に対応しています。1銘柄（¥1,000/月）から追加でき、どのプランでもご利用いただけます。ご希望の銘柄はお申し込み後にご連絡ください。</p>
+        <p>国内外の個別株・指数・テーマ（AI・半導体・EVなど）に対応しています。1銘柄（¥3,000/月）から追加でき、どのプランでもご利用いただけます。ご希望の銘柄はお申し込み後にご連絡ください。</p>
+      </div>
+      <div class="faq-item">
+        <h4>返金保証の条件は？</h4>
+        <p>配信内容にご満足いただけなかった場合、お申し込みから7日以内にメールでご連絡いただければ全額返金いたします。</p>
       </div>
       <div class="faq-item">
         <h4>解約はいつでもできますか？</h4>
@@ -466,7 +476,7 @@
 <section class="cta-final">
   <div class="inner">
     <h2>知っている人間は、もう動いている。</h2>
-    <p>まずはXをフォロー。毎朝の市況投稿で、情報の質の違いを確かめてください。</p>
+    <p>まずはXをフォロー。毎朝の市況ポストで、情報の質の違いを確かめてください。</p>
     <a href="https://x.com/Hedge_Fund_bot" class="hero-cta" target="_blank">
       X でフォローする（無料）
     </a>
@@ -476,12 +486,12 @@
 <!-- FOOTER -->
 <footer>
   <p>
-    <a href="mailto:aousadiak@gmail.com">お問い合わせ</a>
+    <a href="mailto:contact@the-briefing.jp">お問い合わせ</a>
     <a href="tokushoho.html">特定商取引法に基づく表記</a>
     <a href="#">利用規約</a>
     <a href="#">プライバシーポリシー</a>
   </p>
-  <p style="margin-top:12px">© 2026 Hedge_Fund_bot. All rights reserved.</p>
+  <p style="margin-top:12px">&copy; 2026 The Briefing. All rights reserved.</p>
 </footer>
 
 </body>
